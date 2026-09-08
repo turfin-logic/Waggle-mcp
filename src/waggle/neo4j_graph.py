@@ -3168,7 +3168,7 @@ def update_node(
                     role=role,
                     transcript_text=text,
                 )
-        
+
         _candidate_texts = [str(c["content"]) for c in candidates]
         _batch_embeddings: np.ndarray | None = None
         if _candidate_texts:
@@ -3192,7 +3192,7 @@ def update_node(
                 observed_at=observed_at,
                 session_id=session_id,
             )
-            
+
             _precomputed = _batch_embeddings[_idx] if _batch_embeddings is not None else None
             store_result = self.add_node(
                 label=str(candidate["label"]),
