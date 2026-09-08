@@ -3875,7 +3875,7 @@ class MemoryGraph(TranscriptMixin, TraversalMixin, MutationMixin, MemoryGraphBas
             created_ids.add(context_node.id)
 
         atomic_items = split_atomic_items(trimmed_content)
-        
+
         _batch_embeddings: np.ndarray | None = None
         if atomic_items:
             try:
