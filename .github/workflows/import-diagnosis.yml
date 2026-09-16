@@ -1,0 +1,20 @@
+name: Server import diagnosis
+on:
+  push:
+    branches: [fix-ci-import-diagnosis]
+permissions:
+  contents: read
+jobs:
+  imports:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install -e ".[dev]"
+      - run: python -c "from waggle.server.cli import main; from waggle.server.mcp import WaggleServer"
+        env:
+          WAGGLE_MODEL: deterministic
